@@ -7,7 +7,7 @@ fn main() {
     nannou::app(model).update(update).run();
 }
 
-const STEP_SIZE: usize = 100;
+const STEP_SIZE: usize = 50;
 const SIZE: f32 = 1000.0;
 const X_SPLIT_THRESHOLD: f64 = 0.5;
 const Y_SPLIT_THRESHOLD: f64 = 0.5;
@@ -161,8 +161,7 @@ fn view(app: &App, model: &Model, frame: Frame) {
 
     
     for i in ((-1. * SIZE / 2.) as u64..(SIZE / 2.) as u64).step_by(STEP_SIZE) {
-        squares = split_squares(&squares, (Some(i as f32), None), model.rng_seed);
-        squares = split_squares(&squares, (None, Some(i as f32)), model.rng_seed); 
+        squares = split_squares(&squares, (Some(i as f32), Some(i as f32)), model.rng_seed);
     }
 
     
